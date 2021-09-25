@@ -38,9 +38,12 @@ type PodPresetMutator struct {
 func (a *PodPresetMutator) Handle(ctx context.Context, req admission.Request) admission.Response {
 	logger := a.Log.WithValues("podpreset-webhook", fmt.Sprintf("%s/%s", req.Namespace, req.Name))
 
+	logger.Info("1. Handle")
+
 	// Ignore all calls to subresources or resources other than pods.
 	// Ignore all operations other than CREATE.
 	if len(req.SubResource) != 0 || req.Resource.Group != "" || req.Operation != "CREATE" {
+		logger.Info("Ignoring a  call on subresources or resources other than pods ")
 		return admission.Allowed("")
 	}
 
@@ -50,7 +53,7 @@ func (a *PodPresetMutator) Handle(ctx context.Context, req admission.Request) ad
 	if err != nil {
 		return admission.Errored(http.StatusBadRequest, err)
 	}
-
+	logger.Info("2 apparently  a Pod for mutation =" + pod.GetName())
 	// Begin Mutation
 
 	if _, isMirrorPod := pod.Annotations[corev1.MirrorPodAnnotationKey]; isMirrorPod {
@@ -74,12 +77,16 @@ func (a *PodPresetMutator) Handle(ctx context.Context, req admission.Request) ad
 
 	matchingPPs, err := filterPodPresets(logger, *podPresetList, pod)
 	if err != nil {
+		logger.Info("  an error => closing")
 		return admission.Errored(http.StatusInternalServerError, fmt.Errorf("filtering pod presets failed: %v", err))
 	}
 
 	if len(matchingPPs) == 0 {
+		logger.Info("  the Pod for mutation 0  matchingPPs => closing")
 		return admission.Allowed("")
 	}
+
+	logger.Info(" the Pod for mutation =" + pod.GetName() + " has  matchingPPs")
 
 	presetNames := make([]string, len(matchingPPs))
 	for i, pp := range matchingPPs {
@@ -96,7 +103,7 @@ func (a *PodPresetMutator) Handle(ctx context.Context, req admission.Request) ad
 		admission.Allowed("")
 	}
 
-	applyPodPresetsOnPod(pod, matchingPPs)
+	applyPodPresetsOnPod(logger, pod, matchingPPs)
 
 	// End Mutation
 	marshaledPod, err := json.Marshal(pod)
@@ -122,7 +129,7 @@ func filterPodPresets(logger logr.Logger, list redhatcopv1alpha1.PodPresetList, 
 
 	logger.Info("pod.GetName()=" + pod.GetName())
 
-	for _, pp := range list.Items {
+	for idx, pp := range list.Items {
 
 		selector, err := metav1.LabelSelectorAsSelector(&pp.Spec.Selector)
 		if err != nil {
@@ -164,7 +171,7 @@ func filterPodPresets(logger logr.Logger, list redhatcopv1alpha1.PodPresetList, 
 			logger.Info("<<==============================")
 		}
 		logger.Info(">>*********************** appending pp=" + pp.Name)
-		matchingPPs = append(matchingPPs, &pp)
+		matchingPPs = append(matchingPPs, &list.Items[idx])
 		logger.Info("<<*********************** appending pp=" + pp.Name)
 
 	}
@@ -400,21 +407,25 @@ func mergeVolumes(volumes []corev1.Volume, podPresets []*redhatcopv1alpha1.PodPr
 // applyPodPresetsOnPod updates the PodSpec with merged information from all the
 // applicable PodPresets. It ignores the errors of merge functions because merge
 // errors have already been checked in safeToApplyPodPresetsOnPod function.
-func applyPodPresetsOnPod(pod *corev1.Pod, podPresets []*redhatcopv1alpha1.PodPreset) {
+func applyPodPresetsOnPod(logger logr.Logger, pod *corev1.Pod, podPresets []*redhatcopv1alpha1.PodPreset) {
 	if len(podPresets) == 0 {
 		return
 	}
 
 	volumes, _ := mergeVolumes(pod.Spec.Volumes, podPresets)
 	pod.Spec.Volumes = volumes
+	logger.Info("applyPodPresetsOnPod 1. Volumes merged")
 
 	for i, ctr := range pod.Spec.Containers {
 		applyPodPresetsOnContainer(&ctr, podPresets)
 		pod.Spec.Containers[i] = ctr
+		logger.Info("appliedPodPresetsOnPod 1. on a container:" + ctr.Name)
 	}
+
 	for i, iCtr := range pod.Spec.InitContainers {
 		applyPodPresetsOnContainer(&iCtr, podPresets)
 		pod.Spec.InitContainers[i] = iCtr
+		logger.Info("appliedPodPresetsOnPod 1. on a init container:" + iCtr.Name)
 	}
 
 	// add annotation
