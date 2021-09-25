@@ -128,19 +128,20 @@ func filterPodPresets(logger logr.Logger, list redhatcopv1alpha1.PodPresetList, 
 		if err != nil {
 			return nil, fmt.Errorf("label selector conversion failed: %v for selector: %v", pp.Spec.Selector, err)
 		}
-		logger.Info("selector.String()=" + selector.String())
-		logger.Info("labels.Set(pod.Labels).String()=" + labels.Set(pod.Labels).String())
+		logger.Info("selector.String() from podselector=" + selector.String())
+		logger.Info("labels.Set(pod.Labels).String() in the given pod =" + labels.Set(pod.Labels).String())
 
 		podnamerequiredvalue, found := selector.RequiresExactMatch("podnamerequired")
-		logger.Info("checking if found RequiresExactMatch podnamerequired")
+		logger.Info("checking if found RequiresExactMatch podnamerequired for the given pod name" + pod.GetName())
 
 		if found {
-			logger.Info("podnamerequiredvalue=" + podnamerequiredvalue)
+			logger.Info(">>&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+			logger.Info("A field podnamerequired found with the value=" + podnamerequiredvalue)
 			if podnamerequiredvalue != pod.GetName() {
-				logger.Info("podnamerequiredvalue not matching the pod name:" + pod.GetName() + "!=" + podnamerequiredvalue + "=====> next loop")
+				logger.Info("but the field podnamerequired is not matching the pod name:" + pod.GetName() + "!=" + podnamerequiredvalue + "=====> next loop")
 				continue
 			} else {
-				logger.Info("podnamerequiredvalue matching pod:" + pod.GetName() + "==" + podnamerequiredvalue)
+				logger.Info("podnamerequiredvalue is matching the current pod name:" + pod.GetName() + "==" + podnamerequiredvalue)
 				// check if general matching
 				lbls := pod.Labels
 				lbls["podnamerequired"] = pod.GetName()
@@ -151,22 +152,33 @@ func filterPodPresets(logger logr.Logger, list redhatcopv1alpha1.PodPresetList, 
 					continue
 				}
 			}
+			logger.Info("<<&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
 		} else {
+			logger.Info(">>==============================")
+			logger.Info("NO field podnamerequired found => checking if generic label match is there for the pod=" + pod.GetName())
 			// check if the pod labels match the selector (generic case, no requirements on pod name)
 			if !selector.Matches(labels.Set(pod.Labels)) {
-				logger.Info("!selector.Matches(labels.Set(lbls)=====> next loop")
+				logger.Info("no generic label match found !selector.Matches(labels.Set(lbls)=====> next loop")
 				continue
 			}
+			logger.Info("<<==============================")
 		}
+		logger.Info(">>*********************** appending pp=" + pp.Name)
 		matchingPPs = append(matchingPPs, &pp)
+		logger.Info("<<*********************** appending pp=" + pp.Name)
+
 	}
+	logger.Info(">>%%%%%%%%%%%%%%%%%%% for  pod=" + pod.GetName())
+
 	if len(matchingPPs) == 0 {
-		logger.Info("######### no final preset for pod=" + pod.GetName())
+		logger.Info("000000000000 no final preset for pod=" + pod.GetName())
 	} else {
 		for _, ppr := range matchingPPs {
-			logger.Info("##############final preset for pod=" + pod.GetName() + " is name=" + ppr.GetName())
+			logger.Info("final preset for pod=" + pod.GetName() + " is name=" + ppr.GetName())
 		}
 	}
+	logger.Info("<<%%%%%%%%%%%%%%%%%%% for  pod=" + pod.GetName())
+
 	return matchingPPs, nil
 }
 
