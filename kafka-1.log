@@ -1,0 +1,205 @@
+###############################################
+######## initial printenv ######
+###############################################
+ZK_CS_PORT_2182_TCP_PROTO=tcp
+KAFKA_INTER_BROKER_LISTENER_NAME=INTRANET
+LANG=C.UTF-8
+HOSTNAME=kafka-1
+HOST_IP=192.168.39.123
+ZK_CS_PORT_2182_TCP_ADDR=10.99.200.201
+ZK_CS_PORT_2181_TCP_ADDR=10.99.200.201
+ZK_CS_PORT_2181_TCP_PORT=2181
+ZK_CS_SERVICE_PORT_TCP_SECCLIENT=2182
+KAFKA_CS_SERVICE_PORT_TCP_INTER_KAFKA=9092
+KUBERNETES_PORT_443_TCP_PROTO=tcp
+KAFKA_CS_SERVICE_PORT=9093
+KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1
+container=oci
+ZK_CS_PORT_2182_TCP_PORT=2182
+KAFKA_CS_SERVICE_HOST=10.97.98.255
+ZK_CS_SERVICE_PORT_TCP_CLIENT=2181
+KAFKA_CS_PORT=tcp://10.97.98.255:9093
+KUBERNETES_PORT=tcp://10.96.0.1:443
+POD_NAME=kafka-1
+KAFKA_CS_PORT_9092_TCP=tcp://10.97.98.255:9092
+ZK_CS_PORT_2181_TCP=tcp://10.99.200.201:2181
+PWD=/home/appuser
+HOME=/root
+KAFKA_SSL_KEY_PASSWORD=tapowa01
+KAFKA_SSL_TRUSTSTORE_PASSWORD=tapowa01
+KUBERNETES_SERVICE_PORT_HTTPS=443
+WELCOME_MESSAGE=generic WELCOME
+KAFKA_CS_PORT_9092_TCP_PORT=9092
+ZK_CS_PORT_2182_TCP=tcp://10.99.200.201:2182
+KUBERNETES_PORT_443_TCP_PORT=443
+KAFKA_ADVERTISED_LISTENERS=INTERNET://kafka-1.kafka.default.svc.cluster.local:9092,INTRANET://kafka-1.kafka.default.svc.cluster.local:9093
+KAFKA_CS_PORT_9093_TCP=tcp://10.97.98.255:9093
+ZK_CS_PORT=tcp://10.99.200.201:2181
+KAFKA_CS_PORT_9093_TCP_ADDR=10.97.98.255
+KAFKA_CS_PORT_9093_TCP_PORT=9093
+KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INTERNET:SSL,INTRANET:SSL
+KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443
+KAFKA_LOG4J_ROOT_LOGLEVEL=DEBUG
+COMPONENT=kafka
+ZK_CS_SERVICE_HOST=10.99.200.201
+KAFKA_CS_SERVICE_PORT_TCP_INTRA_KAFKA=9093
+KAFKA_SSL_KEYSTORE_PASSWORD=tapowa01
+SHLVL=2
+KAFKA_CS_PORT_9092_TCP_ADDR=10.97.98.255
+ZK_CS_PORT_2181_TCP_PROTO=tcp
+KAFKA_TOOLS_LOG4J_LOGLEVEL=DEBUG
+KAFKA_LISTENERS=INTERNET://:9092,INTRANET://:9093
+ZK_CS_SERVICE_PORT=2181
+POD_NAMESPACE=default
+KAFKA_SSL_KEYSTORE_LOCATION=/mnt/keystore.jks
+KAFKA_ZOOKEEPER_CONNECT=zk-hs.default.svc.cluster.local:2181
+KUBERNETES_SERVICE_PORT=443
+KAFKA_SSL_TRUSTSTORE_LOCATION=/mnt/truststore.jks
+KAFKA_CS_PORT_9092_TCP_PROTO=tcp
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+KAFKA_CS_PORT_9093_TCP_PROTO=tcp
+CUB_CLASSPATH="/usr/share/java/cp-base-new/*"
+KUBERNETES_SERVICE_HOST=10.96.0.1
+_=/usr/bin/printenv
+###############################################
+######## EOF initial printenv ######
+###############################################
+HOSTNAME: kafka-1 1 
+Exporting Variables TODO: change to a new image layer rather 
+###############################################
+######## final printenv ######
+###############################################
+ZK_CS_PORT_2182_TCP_PROTO=tcp
+KAFKA_INTER_BROKER_LISTENER_NAME=INTRANET
+LANG=C.UTF-8
+HOSTNAME=kafka-1
+HOST_IP=192.168.39.123
+ZK_CS_PORT_2182_TCP_ADDR=10.99.200.201
+ZK_CS_PORT_2181_TCP_ADDR=10.99.200.201
+ZK_CS_PORT_2181_TCP_PORT=2181
+ZK_CS_SERVICE_PORT_TCP_SECCLIENT=2182
+KAFKA_CS_SERVICE_PORT_TCP_INTER_KAFKA=9092
+KUBERNETES_PORT_443_TCP_PROTO=tcp
+KAFKA_CS_SERVICE_PORT=9093
+KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1
+container=oci
+ZK_CS_PORT_2182_TCP_PORT=2182
+KAFKA_CS_SERVICE_HOST=10.97.98.255
+ZK_CS_SERVICE_PORT_TCP_CLIENT=2181
+KAFKA_CS_PORT=tcp://10.97.98.255:9093
+KUBERNETES_PORT=tcp://10.96.0.1:443
+POD_NAME=kafka-1
+KAFKA_CS_PORT_9092_TCP=tcp://10.97.98.255:9092
+ZK_CS_PORT_2181_TCP=tcp://10.99.200.201:2181
+PWD=/home/appuser
+HOME=/root
+KAFKA_SSL_KEY_PASSWORD=tapowa01
+KAFKA_SSL_TRUSTSTORE_PASSWORD=tapowa01
+KUBERNETES_SERVICE_PORT_HTTPS=443
+WELCOME_MESSAGE=generic WELCOME
+KAFKA_CS_PORT_9092_TCP_PORT=9092
+ZK_CS_PORT_2182_TCP=tcp://10.99.200.201:2182
+KUBERNETES_PORT_443_TCP_PORT=443
+KAFKA_ADVERTISED_LISTENERS=INTERNET://kafka-1.kafka.default.svc.cluster.local:9092,INTRANET://kafka-1.kafka.default.svc.cluster.local:9093
+KAFKA_CS_PORT_9093_TCP=tcp://10.97.98.255:9093
+ZK_CS_PORT=tcp://10.99.200.201:2181
+KAFKA_CS_PORT_9093_TCP_ADDR=10.97.98.255
+KAFKA_CS_PORT_9093_TCP_PORT=9093
+KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INTERNET:SSL,INTRANET:SSL
+KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443
+KAFKA_LOG4J_ROOT_LOGLEVEL=DEBUG
+COMPONENT=kafka
+ZK_CS_SERVICE_HOST=10.99.200.201
+KAFKA_BROKER_ID=1
+KAFKA_CS_SERVICE_PORT_TCP_INTRA_KAFKA=9093
+KAFKA_SSL_KEYSTORE_PASSWORD=tapowa01
+SHLVL=2
+KAFKA_CS_PORT_9092_TCP_ADDR=10.97.98.255
+ZK_CS_PORT_2181_TCP_PROTO=tcp
+KAFKA_TOOLS_LOG4J_LOGLEVEL=DEBUG
+KAFKA_LISTENERS=INTERNET://:9092,INTRANET://:9093
+ZK_CS_SERVICE_PORT=2181
+POD_NAMESPACE=default
+KAFKA_SSL_KEYSTORE_LOCATION=/mnt/keystore.jks
+KAFKA_ZOOKEEPER_CONNECT=zk-hs.default.svc.cluster.local:2181
+KUBERNETES_SERVICE_PORT=443
+KAFKA_SSL_TRUSTSTORE_LOCATION=/mnt/truststore.jks
+KAFKA_CS_PORT_9092_TCP_PROTO=tcp
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+KAFKA_CS_PORT_9093_TCP_PROTO=tcp
+CUB_CLASSPATH="/usr/share/java/cp-base-new/*"
+KUBERNETES_SERVICE_HOST=10.96.0.1
+_=/usr/bin/printenv
+###############################################
+######## EOF final printenv ######
+###############################################
+===> User
+uid=0(root) gid=0(root) groups=0(root)
+===> Configuring ...
+===> Running preflight checks ... 
+===> Check if /var/lib/kafka/data is writable ...
+===> Check if Zookeeper is healthy ...
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/share/java/cp-base-new/slf4j-simple-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/share/java/cp-base-new/slf4j-log4j12-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.SimpleLoggerFactory]
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:zookeeper.version=3.5.9-83df9301aa5c2a5d284a9940177808c01bc35cef, built on 01/06/2021 20:03 GMT
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:host.name=kafka-1.kafka.default.svc.cluster.local
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.version=11.0.12
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.vendor=Azul Systems, Inc.
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.home=/usr/lib/jvm/zulu11-ca
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.class.path=/usr/share/java/cp-base-new/snappy-java-1.1.8.1.jar:/usr/share/java/cp-base-new/common-utils-6.2.0.jar:/usr/share/java/cp-base-new/json-simple-1.1.1.jar:/usr/share/java/cp-base-new/kafka_2.13-6.2.0-ccs.jar:/usr/share/java/cp-base-new/jolokia-core-1.6.2.jar:/usr/share/java/cp-base-new/scala-library-2.13.5.jar:/usr/share/java/cp-base-new/zookeeper-jute-3.5.9.jar:/usr/share/java/cp-base-new/kafka-metadata-6.2.0-ccs.jar:/usr/share/java/cp-base-new/snakeyaml-1.26.jar:/usr/share/java/cp-base-new/scala-logging_2.13-3.9.2.jar:/usr/share/java/cp-base-new/scala-reflect-2.13.5.jar:/usr/share/java/cp-base-new/scala-java8-compat_2.13-0.9.1.jar:/usr/share/java/cp-base-new/jmx_prometheus_javaagent-0.14.0.jar:/usr/share/java/cp-base-new/commons-cli-1.4.jar:/usr/share/java/cp-base-new/utility-belt-6.2.0.jar:/usr/share/java/cp-base-new/gson-2.8.6.jar:/usr/share/java/cp-base-new/jackson-core-2.10.5.jar:/usr/share/java/cp-base-new/zstd-jni-1.4.9-1.jar:/usr/share/java/cp-base-new/zookeeper-3.5.9.jar:/usr/share/java/cp-base-new/jolokia-jvm-1.6.2-agent.jar:/usr/share/java/cp-base-new/confluent-log4j-1.2.17-cp2.jar:/usr/share/java/cp-base-new/slf4j-api-1.7.30.jar:/usr/share/java/cp-base-new/scala-collection-compat_2.13-2.3.0.jar:/usr/share/java/cp-base-new/argparse4j-0.7.0.jar:/usr/share/java/cp-base-new/jackson-annotations-2.10.5.jar:/usr/share/java/cp-base-new/jopt-simple-5.0.4.jar:/usr/share/java/cp-base-new/slf4j-simple-1.7.30.jar:/usr/share/java/cp-base-new/jackson-databind-2.10.5.1.jar:/usr/share/java/cp-base-new/slf4j-log4j12-1.7.30.jar:/usr/share/java/cp-base-new/jackson-dataformat-csv-2.10.5.jar:/usr/share/java/cp-base-new/lz4-java-1.7.1.jar:/usr/share/java/cp-base-new/metrics-core-2.2.0.jar:/usr/share/java/cp-base-new/paranamer-2.8.jar:/usr/share/java/cp-base-new/jackson-module-paranamer-2.10.5.jar:/usr/share/java/cp-base-new/disk-usage-agent-6.2.0.jar:/usr/share/java/cp-base-new/jackson-dataformat-yaml-2.10.5.jar:/usr/share/java/cp-base-new/audience-annotations-0.5.0.jar:/usr/share/java/cp-base-new/jackson-datatype-jdk8-2.10.5.jar:/usr/share/java/cp-base-new/jackson-module-scala_2.13-2.10.5.jar:/usr/share/java/cp-base-new/kafka-clients-6.2.0-ccs.jar:/usr/share/java/cp-base-new/kafka-raft-6.2.0-ccs.jar
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.library.path=/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.io.tmpdir=/tmp
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.compiler=<NA>
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:os.name=Linux
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:os.arch=amd64
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:os.version=4.19.202
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:user.name=root
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:user.home=/root
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:user.dir=/home/appuser
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:os.memory.free=54MB
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:os.memory.max=953MB
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:os.memory.total=59MB
+[main] INFO org.apache.zookeeper.ZooKeeper - Initiating client connection, connectString=zk-hs.default.svc.cluster.local:2181 sessionTimeout=40000 watcher=io.confluent.admin.utils.ZookeeperConnectionWatcher@49fc609f
+[main] INFO org.apache.zookeeper.common.X509Util - Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation
+[main] INFO org.apache.zookeeper.ClientCnxnSocket - jute.maxbuffer value is 4194304 Bytes
+[main] INFO org.apache.zookeeper.ClientCnxn - zookeeper.request.timeout value is 0. feature enabled=
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.2.185:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket connection established, initiating session, client: /10.244.1.224:46120, server: zk-hs.default.svc.cluster.local/10.244.2.185:2181
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Unable to read additional data from server sessionid 0x0, likely server has closed socket, closing socket connection and attempting reconnect
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.2.185:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket connection established, initiating session, client: /10.244.1.224:46130, server: zk-hs.default.svc.cluster.local/10.244.2.185:2181
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Unable to read additional data from server sessionid 0x0, likely server has closed socket, closing socket connection and attempting reconnect
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.1.223:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket error occurred: zk-hs.default.svc.cluster.local/10.244.1.223:2181: Connection refused
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.2.185:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket connection established, initiating session, client: /10.244.1.224:46146, server: zk-hs.default.svc.cluster.local/10.244.2.185:2181
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Unable to read additional data from server sessionid 0x0, likely server has closed socket, closing socket connection and attempting reconnect
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.1.223:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket error occurred: zk-hs.default.svc.cluster.local/10.244.1.223:2181: Connection refused
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.2.185:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket connection established, initiating session, client: /10.244.1.224:46154, server: zk-hs.default.svc.cluster.local/10.244.2.185:2181
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Unable to read additional data from server sessionid 0x0, likely server has closed socket, closing socket connection and attempting reconnect
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.2.185:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket connection established, initiating session, client: /10.244.1.224:46156, server: zk-hs.default.svc.cluster.local/10.244.2.185:2181
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Unable to read additional data from server sessionid 0x0, likely server has closed socket, closing socket connection and attempting reconnect
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.0.135:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket error occurred: zk-hs.default.svc.cluster.local/10.244.0.135:2181: Connection refused
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.2.185:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket connection established, initiating session, client: /10.244.1.224:46162, server: zk-hs.default.svc.cluster.local/10.244.2.185:2181
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Unable to read additional data from server sessionid 0x0, likely server has closed socket, closing socket connection and attempting reconnect
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.1.223:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket error occurred: zk-hs.default.svc.cluster.local/10.244.1.223:2181: Connection refused
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.1.223:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket error occurred: zk-hs.default.svc.cluster.local/10.244.1.223:2181: Connection refused
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.2.185:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket connection established, initiating session, client: /10.244.1.224:46176, server: zk-hs.default.svc.cluster.local/10.244.2.185:2181
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Unable to read additional data from server sessionid 0x0, likely server has closed socket, closing socket connection and attempting reconnect
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.0.135:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket error occurred: zk-hs.default.svc.cluster.local/10.244.0.135:2181: Connection refused
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.1.223:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket error occurred: zk-hs.default.svc.cluster.local/10.244.1.223:2181: Connection refused
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server zk-hs.default.svc.cluster.local/10.244.1.223:2181. Will not attempt to authenticate using SASL (unknown error)
+[main-SendThread(zk-hs.default.svc.cluster.local:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket error occurred: zk-hs.default.svc.cluster.local/10.244.1.223:2181: Connection refused

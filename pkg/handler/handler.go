@@ -205,11 +205,11 @@ func safeToApplyPodPresetsOnPod(pod *corev1.Pod, podPresets []*redhatcopv1alpha1
 
 // safeToApplyPodPresetsOnContainer determines if there is any conflict in
 // information injected by given PodPresets in the given container.
-func safeToApplyPodPresetsOnContainer(ctr *corev1.Container, podPresets []*redhatcopv1alpha1.PodPreset) error {
+func safeToApplyPodPresetsOnContainer(logger logr.Logger, ctr *corev1.Container, podPresets []*redhatcopv1alpha1.PodPreset) error {
 	var errs []error
 	// check if it is safe to merge env vars and volume mounts from given podpresets and
 	// container's existing env vars.
-	if _, err := mergeEnv(ctr.Env, podPresets); err != nil {
+	if _, err := mergeEnv(logger, ctr.Env, podPresets); err != nil {
 		errs = append(errs, err)
 	}
 	if _, err := mergeVolumeMounts(ctr.VolumeMounts, podPresets); err != nil {
@@ -221,10 +221,12 @@ func safeToApplyPodPresetsOnContainer(ctr *corev1.Container, podPresets []*redha
 
 // mergeEnv merges a list of env vars with the env vars injected by given list podPresets.
 // It returns an error if it detects any conflict during the merge.
-func mergeEnv(envVars []corev1.EnvVar, podPresets []*redhatcopv1alpha1.PodPreset) ([]corev1.EnvVar, error) {
+func mergeEnv(logger logr.Logger, envVars []corev1.EnvVar, podPresets []*redhatcopv1alpha1.PodPreset) ([]corev1.EnvVar, error) {
 	origEnv := map[string]corev1.EnvVar{}
-	for _, v := range envVars {
+	index := make(map[string]int)
+	for idx, v := range envVars {
 		origEnv[v.Name] = v
+		index[v.Name] = idx
 	}
 
 	mergedEnv := make([]corev1.EnvVar, len(envVars))
@@ -233,20 +235,27 @@ func mergeEnv(envVars []corev1.EnvVar, podPresets []*redhatcopv1alpha1.PodPreset
 	var errs []error
 
 	for _, pp := range podPresets {
+		logger.Info("merging env from pp.Name " + pp.Name)
 		for _, v := range pp.Spec.Env {
+			logger.Info("merging env var name:" + v.Name)
 
-			found, ok := origEnv[v.Name]
+			_, ok := origEnv[v.Name]
 			if !ok {
+				logger.Info("will be appendend - not found in current env:" + v.Name)
 				// if we don't already have it append it and continue
 				origEnv[v.Name] = v
 				mergedEnv = append(mergedEnv, v)
 				continue
+			} else {
+				logger.Info(" found -> overwrite value - found in current env:" + v.Name)
+				mergedEnv[index[v.Name]] = v
+
 			}
 
-			// make sure they are identical or throw an error
-			if !reflect.DeepEqual(found, v) {
-				errs = append(errs, fmt.Errorf("merging env for %s has a conflict on %s: \n%#v\ndoes not match\n%#v\n in container", pp.GetName(), v.Name, v, found))
-			}
+			// // make sure they are identical or throw an error
+			// if !reflect.DeepEqual(found, v) {
+			// 	errs = append(errs, fmt.Errorf("merging env for %s has a conflict on %s: \n%#v\ndoes not match\n%#v\n in container", pp.GetName(), v.Name, v, found))
+			// }
 		}
 	}
 
@@ -417,13 +426,17 @@ func applyPodPresetsOnPod(logger logr.Logger, pod *corev1.Pod, podPresets []*red
 	logger.Info("applyPodPresetsOnPod 1. Volumes merged")
 
 	for i, ctr := range pod.Spec.Containers {
-		applyPodPresetsOnContainer(&ctr, podPresets)
+		applyPodPresetsOnContainer(logger, &ctr, podPresets)
 		pod.Spec.Containers[i] = ctr
 		logger.Info("appliedPodPresetsOnPod 1. on a container:" + ctr.Name)
+		for idx, env := range ctr.Env {
+			logger.Info("after RETURNING container env on index " + fmt.Sprintf("%d", idx) + " :" + env.Name + ": " + env.Value)
+		}
+
 	}
 
 	for i, iCtr := range pod.Spec.InitContainers {
-		applyPodPresetsOnContainer(&iCtr, podPresets)
+		applyPodPresetsOnContainer(logger, &iCtr, podPresets)
 		pod.Spec.InitContainers[i] = iCtr
 		logger.Info("appliedPodPresetsOnPod 1. on a init container:" + iCtr.Name)
 	}
@@ -441,13 +454,38 @@ func applyPodPresetsOnPod(logger logr.Logger, pod *corev1.Pod, podPresets []*red
 // applyPodPresetsOnContainer injects envVars, VolumeMounts and envFrom from
 // given podPresets in to the given container. It ignores conflict errors
 // because it assumes those have been checked already by the caller.
-func applyPodPresetsOnContainer(ctr *corev1.Container, podPresets []*redhatcopv1alpha1.PodPreset) {
-	envVars, _ := mergeEnv(ctr.Env, podPresets)
+func applyPodPresetsOnContainer(logger logr.Logger, ctr *corev1.Container, podPresets []*redhatcopv1alpha1.PodPreset) {
+
+	for idx, env := range ctr.Env {
+		logger.Info("initial container env on index " + fmt.Sprintf("%d", idx) + " :" + env.Name + ": " + env.Value)
+	}
+
+	for idx, env := range ctr.Env {
+		logger.Info("INITIAL ctr.Env before merging container env on index " + fmt.Sprintf("%d", idx) + " :" + env.Name + ": " + env.Value)
+	}
+
+	for _, preset := range podPresets {
+		for jdx, env := range (*preset).Spec.Env {
+			logger.Info("initial podPresets env of (*preset).Name:" + (*preset).Name + "on index " + fmt.Sprintf("%d", jdx) + " :" + env.Name + ": " + env.Value)
+		}
+	}
+
+	envVars, _ := mergeEnv(logger, ctr.Env, podPresets)
 	ctr.Env = envVars
+	for idx, env := range ctr.Env {
+		logger.Info("ctr.Env after merging container env on index " + fmt.Sprintf("%d", idx) + " :" + env.Name + ": " + env.Value)
+	}
 
 	volumeMounts, _ := mergeVolumeMounts(ctr.VolumeMounts, podPresets)
 	ctr.VolumeMounts = volumeMounts
+	for idx, vm := range ctr.VolumeMounts {
+		logger.Info("ctr.VolumeMounts after merging container mountvols on index " + fmt.Sprintf("%d", idx) + " :" + vm.Name + ": " + vm.MountPath)
+	}
 
 	envFrom, _ := mergeEnvFrom(ctr.EnvFrom, podPresets)
 	ctr.EnvFrom = envFrom
+
+	for idx, envfrom := range ctr.EnvFrom {
+		logger.Info("ctr.VolumeMounts after merging container envfroms on index " + fmt.Sprintf("%d", idx) + " :" + envfrom.String() + ": prefix " + envfrom.Prefix)
+	}
 }

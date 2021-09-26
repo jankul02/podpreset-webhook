@@ -1,5 +1,5 @@
 # Current Operator version
-VERSION ?= 0.0.42
+VERSION ?= 0.0.51
 
 # Default bundle image tag
 IMAGE_TAG_BASE ?= jankul02/podpreset
